@@ -1,0 +1,20 @@
+syntax="proto3";
+package proto;
+option go_package="proto/user";
+import "google/api/annotations.proto";
+
+message LoginReq {
+    string username = 1;
+}
+
+message LoginResp {
+    string result = 1;
+}
+
+service UserService {
+    rpc Login (LoginReq) returns (LoginResp) {
+        option (google.api.http) = {
+            get: "/login"
+        };
+    }
+}
